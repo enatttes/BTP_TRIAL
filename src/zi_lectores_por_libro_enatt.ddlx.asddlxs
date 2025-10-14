@@ -12,7 +12,7 @@
         value: 'Lector'
     }
 }
-annotate entity ZC_Lectores_Enatt
+annotate entity ZI_Lectores_por_Libro_Enatt
     with 
 {
   @UI: {
@@ -36,25 +36,25 @@ annotate entity ZC_Lectores_Enatt
                      importance: #HIGH }],
          fieldGroup: [{ qualifier: 'InfoLector',
                         position: 20 }]
-      }
-  TipoAcceso;
+      } 
+  Nombre;
   @UI : { lineItem: [{ position: 30,
                      importance: #HIGH }],
          fieldGroup: [{ qualifier: 'InfoLector',
                         position: 30 }]
-      } 
-  Nombre;
+      }
+  Apellidos;
   @UI : { lineItem: [{ position: 40,
                      importance: #HIGH }],
          fieldGroup: [{ qualifier: 'InfoLector',
                         position: 40 }]
-      }
-  Apellidos;
-  @UI : { lineItem: [{ position: 50,
-                     importance: #HIGH }],
-         fieldGroup: [{ qualifier: 'InfoLector',
-                        position: 50 }]
       }                        
   Email;
-
+  @UI : { lineItem: [{ position: 50,
+                     importance: #LOW }],
+         fieldGroup: [{ qualifier: 'InfoLector',
+                        position: 50 }]
+      }
+  TipoAcceso;
+  
 }

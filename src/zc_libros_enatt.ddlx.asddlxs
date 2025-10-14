@@ -18,9 +18,9 @@ annotate view ZC_Libros_Enatt
     with 
 {
     @UI:{ facet: [{ id      : 'InfoLibro', 
-                  label   : 'Información del Libro', 
-                  type    : #COLLECTION, 
-                  position: 10 }, 
+                    label   : 'Información del Libro', 
+                    type    : #COLLECTION, 
+                    position: 10 }, 
                 { id: 'Info', 
                   parentId: 'InfoLibro', 
                   label: 'Información', 
@@ -86,8 +86,16 @@ annotate view ZC_Libros_Enatt
     Idioma;
     @UI.lineItem: [{ position: 60, importance: #LOW }]
     Paginas;
-    @UI.lineItem: [{ position: 70, importance: #HIGH }]
-    Formato;
+    @UI:{ selectionField: [{ position: 40 }] }
+    @Consumption:{
+           valueHelpDefinition: [{ entity: { name   : 'ZI_Formato_Enatt',
+                                             element: 'Formato' } }]}
+    Formato;                            
+    @UI:{ fieldGroup: [{ qualifier: 'InfoLibro', 
+                         position: 60,
+                         label: 'Formato' }],
+          lineItem: [{ position: 70, importance: #HIGH, label: 'Formato' }]} 
+    DescripcionFormato;
     @UI.lineItem: [{ position: 80, importance: #MEDIUM }]
     CantidadVendida;
     @UI.lineItem: [{ position: 90, importance: #MEDIUM, label: 'Nivel de Ventas', criticality: 'NivelVentas' }]

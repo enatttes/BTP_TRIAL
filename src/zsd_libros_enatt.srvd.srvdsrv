@@ -1,6 +1,7 @@
 @EndUserText.label: 'Service Definition Libros enattesb'
 define service ZSD_Libros_Enatt {
-  expose ZC_Libros_Enatt    as Libros;
-  expose ZC_Lectores_Enatt  as Lectores;
-  expose ZC_Categoria_Enatt as Categorias;
+  expose ZC_Libros_Enatt             as Libros;
+  expose ZI_Lectores_por_Libro_Enatt as Lectores;
+  expose ZI_Formato_Enatt            as Formatos;
+  expose ZC_Categoria_Enatt          as Categorias;
 }

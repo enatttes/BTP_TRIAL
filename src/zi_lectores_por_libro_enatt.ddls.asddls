@@ -1,6 +1,6 @@
 @AbapCatalog.viewEnhancementCategory: [#NONE]
 @AccessControl.authorizationCheck: #NOT_REQUIRED
-@EndUserText.label: 'CDS Consumo Lectores enattesb'
+@EndUserText.label: 'CDS Interface Lectores x Libro enattesb'
 @Metadata.ignorePropagatedAnnotations: true
 @Metadata.allowExtensions: true
 @ObjectModel.usageType:{
@@ -8,17 +8,15 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
-define view entity ZC_Lectores_Enatt
-  as select from ZI_Clientes_Lectores_Enatt
+define view entity ZI_Lectores_por_Libro_Enatt
+  as select from ZI_Lectores_Enatt
 {
   key Libro,
-      Lector,
+  key Lector,
+  key TipoAcceso,
       Nombre,
       Apellidos,
       Email,
-      TipoAcceso,
-      Imagen,
+      Imagen
 
-      /* Associations */
-      _Lectores
 }
