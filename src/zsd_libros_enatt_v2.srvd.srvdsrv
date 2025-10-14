@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition Libros v2 enattesb'
+define service ZSD_Libros_Enatt_v2 {
+  expose ZC_Libros_Enatt    as Libros;
+  expose ZC_Lectores_Enatt  as Lectores;
+  expose ZC_Categoria_Enatt as Categorias;
+}

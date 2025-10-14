@@ -1,0 +1,100 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Libro',
+    typeNamePlural: 'Libros',
+    typeImageUrl: '',
+    imageUrl: 'Imagen',
+    title: {
+        type: #STANDARD,
+        value: 'Titulo'
+    },
+    description: {
+        type: #STANDARD,
+        value: 'Autor'
+    }
+}
+@Search.searchable: true
+annotate view ZC_Libros_Enatt
+    with 
+{
+    @UI:{ facet: [{ id      : 'InfoLibro', 
+                  label   : 'Información del Libro', 
+                  type    : #COLLECTION, 
+                  position: 10 }, 
+                { id: 'Info', 
+                  parentId: 'InfoLibro', 
+                  label: 'Información', 
+                  type: #FIELDGROUP_REFERENCE,
+                  targetQualifier: 'InfoLibro',
+                  position: 10 },
+                { id: 'Lectores', 
+                  label: 'Lectores', 
+                  type: #LINEITEM_REFERENCE, 
+                  targetElement: '_Lectores', 
+                  position: 20 }],
+           
+          fieldGroup: [{ qualifier: 'InfoLibro', 
+                         position: 10 }]}
+    @Search: {
+        defaultSearchElement: true,
+        ranking: #HIGH,
+        fuzzinessThreshold: 0.8 }
+    Libro;
+    @UI:{ fieldGroup: [{ qualifier : 'InfoLibro', 
+                         position  : 20 }],
+          lineItem  : [{ position  : 10,
+                         importance: #HIGH }],
+          selectionField: [{ position: 10 }] }
+    @Search: {
+        defaultSearchElement: true,
+        ranking: #HIGH,
+        fuzzinessThreshold: 0.8 }
+    Titulo;
+    @UI:{ fieldGroup: [{ qualifier: 'InfoLibro', 
+                         position: 30 }],
+          lineItem  : [{ position  : 20,
+                         importance: #HIGH }],                         
+          selectionField: [{ position: 20 }] }
+    @Search: {
+        defaultSearchElement: true,
+        ranking: #MEDIUM,
+        fuzzinessThreshold: 0.8 }
+    Autor;
+    @UI:{ fieldGroup: [{ qualifier: 'InfoLibro',
+                         position: 40,
+                         label: 'Categoría' }],
+          lineItem  : [{ position  : 30,
+                         importance: #HIGH,
+                         label: 'Categoria' }]}  
+    DescripcionCategoria;
+    @UI:{ selectionField: [{ position: 30 }] }
+    @Consumption:{
+           valueHelpDefinition: [{ entity: { name   : 'ZC_Categoria_Enatt',
+                                             element: 'Categoria' } }]}  
+    Categoria;
+    @UI:{ fieldGroup: [{ qualifier: 'InfoLibro', 
+                         position: 50 }],
+          lineItem  : [{ position  : 40,
+                         importance: #HIGH }]}
+    @Search: {
+        defaultSearchElement: true,
+        ranking: #MEDIUM,
+        fuzzinessThreshold: 0.8 }
+    Editorial;
+    
+    @UI.lineItem: [{ position: 50, importance: #LOW }]
+    Idioma;
+    @UI.lineItem: [{ position: 60, importance: #LOW }]
+    Paginas;
+    @UI.lineItem: [{ position: 70, importance: #HIGH }]
+    Formato;
+    @UI.lineItem: [{ position: 80, importance: #MEDIUM }]
+    CantidadVendida;
+    @UI.lineItem: [{ position: 90, importance: #MEDIUM, label: 'Nivel de Ventas', criticality: 'NivelVentas' }]
+    DescripcionNivelVentas;
+    @UI.lineItem: [{ position: 100, importance: #HIGH }]
+    Precio;
+    @UI.lineItem: [{ position: 110, importance: #HIGH }]
+    _Lectores;
+    
+}
