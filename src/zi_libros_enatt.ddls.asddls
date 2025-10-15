@@ -26,7 +26,8 @@ define view entity ZI_Libros_Enatt
         when _Ventas.CantidadVendida = 0 then '0'
         when _Ventas.CantidadVendida < 3 then '1'
         when _Ventas.CantidadVendida < 8 then '2'
-        else '3'
+        when _Ventas.CantidadVendida > 7 then '3'
+        else '0'
       end as NivelVentas,
       @Semantics.amount.currencyCode: 'Moneda'
       Precio,
