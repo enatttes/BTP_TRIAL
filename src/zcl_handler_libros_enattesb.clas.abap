@@ -157,7 +157,11 @@ CLASS zcl_handler_libros_enattesb IMPLEMENTATION.
                                CHANGING  data = <table_structure> ).
 
     IF dataoption = `1`.  "if replace, delete the data from the table first
-      DELETE FROM (tablename).
+      TRY.
+          DELETE FROM (tablename).
+        CATCH cx_abap_not_a_table.
+
+      ENDTRY.
     ENDIF.
 
     TRY.
