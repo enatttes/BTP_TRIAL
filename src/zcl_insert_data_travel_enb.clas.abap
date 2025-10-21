@@ -56,11 +56,9 @@ CLASS zcl_insert_data_travel_enb IMPLEMENTATION.
     DELETE FROM ztb_travel_en.
     DELETE FROM ztb_booking_en.
     DELETE FROM ztb_booksup_en.
-
     INSERT: ztb_travel_en  FROM TABLE @lt_travel,
             ztb_booking_en FROM TABLE @lt_booking,
             ztb_booksup_en FROM TABLE @lt_book_sup.
-
     out->write( 'Registros inseertados correctamente' ).
   ENDMETHOD.
 ENDCLASS.
